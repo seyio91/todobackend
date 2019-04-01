@@ -4,7 +4,7 @@ from django.db import models
 
 
 #creating our models
-class TodoItems(models.Model):
+class TodoItem(models.Model):
 	title = models.CharField(max_length=256, null=True, blank=True)
 	completed = models.BooleanField(blank=True, default=False)
 	url = models.CharField(max_length=256, null=True, blank=True)
