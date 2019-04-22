@@ -3,11 +3,12 @@ MAINTAINER Seyi Obaweya <seyi_obaweya@yahoo.com>
 
 # Install dev/build dependencies
 RUN apt-get update && \
-    apt-get install -qy python-dev 
+    apt-get install -qy python3-dev 
 
 # Activate virtual environment and install wheel support
 RUN . /appenv/bin/activate && \
-    pip install wheel --upgrade
+    pip3 install pip --upgrade && \
+    pip3 install wheel --upgrade
 
 # PIP environment variables (NOTE: must be set after installing wheel)
 ENV WHEELHOUSE=/wheelhouse PIP_WHEEL_DIR=/wheelhouse PIP_FIND_LINKS=/wheelhouse XDG_CACHE_HOME=/cache
@@ -24,7 +25,7 @@ RUN chmod +x /usr/local/bin/test.sh
 
 # Set defaults for entrypoint and command string
 ENTRYPOINT ["test.sh"]
-CMD ["python", "manage.py", "test", "--noinput"]
+CMD ["python3", "manage.py", "test", "--noinput"]
 
 # Add application source
 COPY src /application
