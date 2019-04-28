@@ -2,16 +2,16 @@ from .base import *
 import os
 
 
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.mysql',
-#        'NAME': os.environ.get('MYSQL_DATABASE', 'todobackend'),
-#        'USER': os.environ.get('MYSQL_USER', 'todo'),
-#        'PASSWORD': os.environ.get('MYSQL_PASSWORD', 'password'),
-#        'HOST': os.environ.get('MYSQL_HOST', 'localhost'),
-#        'PORT': os.environ.get('MYSQL_PORT', '3306')
-#    }
-#}
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.environ.get('MYSQL_DATABASE', 'todobackend'),
+        'USER': os.environ.get('MYSQL_USER', 'todo'),
+        'PASSWORD': os.environ.get('MYSQL_PASSWORD', 'password'),
+        'HOST': os.environ.get('MYSQL_HOST', 'localhost'),
+        'PORT': os.environ.get('MYSQL_PORT', '3306')
+    }
+}
 #installed Apps
 
 INSTALLED_APPS += ('django_nose', )
@@ -30,13 +30,13 @@ NOSE_ARGS = [
     '--cover-xml-file=%s/covergae.xml' % TEST_OUTPUT_DIR
 ]
 
-DATABASES = {
-   'default': {
-       'ENGINE': 'django.db.backends.mysql',
-       'NAME': 'todobackend',
-       'USER': 'todo',
-       'PASSWORD': 'password',
-       'HOST': 'localhost',
-       'PORT': '3306'
-    }
-}
+#DATABASES = {
+#   'default': {
+#       'ENGINE': 'django.db.backends.mysql',
+#       'NAME': 'todobackend',
+#       'USER': 'todo',
+#       'PASSWORD': 'password',
+#       'HOST': 'localhost',
+#       'PORT': '3306'
+#    }
+#}

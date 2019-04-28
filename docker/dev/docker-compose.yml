@@ -1,0 +1,38 @@
+version: '3'
+services:
+  db:
+    image: "mysql:5.6"
+    hostname: db
+    expose:
+      - "3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+
+  agent:
+    image: seyio/ansible
+    volumes:
+      - /home/vagrant/cd-docker-ansible/todobackend/ansible/probe.yml:/ansible/site.yml
+    links:
+      - db
+    environment:
+      PROBE_HOST: "db"
+      PROBE_PORT: "3306"
+
+  test:
+    build: 
+      context: ../../
+      dockerfile: docker/dev/Dockerfile
+    image: todobackend-dev
+    volumes:
+      - cache:/cache
+    links:
+      - db
+    environment:
+      DJANGO_SETTINGS_MODULE: todobackend.settings.test
+      MYSQL_HOST: db
+      MYSQL_USER: root
+      MYSQL_PASSWORD: password
+      TEST_OUTPUT_DIR: /reports
+
+volumes:
+  cache:
