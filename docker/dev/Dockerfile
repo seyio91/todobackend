@@ -33,6 +33,5 @@ CMD ["python3", "manage.py", "test", "--noinput"]
 
 # Add application source
 COPY src /application
-COPY wait-for-it.sh /usr/local/bin/wait-for-it.sh
-RUN chmod +x /usr/local/bin/wait-for-it.sh && ln -s /usr/local/bin/wait-for-it.sh /application/wait-for-it.sh
+
 WORKDIR /application
