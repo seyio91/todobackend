@@ -8,6 +8,26 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: password
 
+  builder:
+    build:
+      context: ../../
+      dockerfile: docker/dev/Dockerfile
+    volumes:
+      - ../../target:/wheelhouse
+      - cache
+    entrypoint: "entrypoint.sh"
+    command: ["pip", "wheel", "--no-index", "-f /build", "."]
+
+  agent:
+    image: seyio/ansible
+    volumes:
+      - /home/vagrant/cd-docker-ansible/todobackend/ansible/probe.yml:/ansible/site.yml
+    links:
+      - db
+    environment:
+      PROBE_HOST: "db"
+      PROBE_PORT: "3306"
+
   test:
     build: 
       context: ../../
@@ -24,5 +44,12 @@ services:
       MYSQL_PASSWORD: password
       TEST_OUTPUT_DIR: /reports
 
+#  cache:
+#    build:
+#      context: ../../
+#      dockerfile: docker/dev/Dockerfile
+#    volumes:
+#      - /tmp/cache:/
 volumes:
-  cache:
+  cache: {}
+  build: {}

@@ -15,6 +15,7 @@ services:
     volumes:
       - ../../target:/wheelhouse
       - cache
+      - build:/build
     entrypoint: "entrypoint.sh"
     command: ["pip", "wheel", "--no-index", "-f /build", "."]
 
@@ -28,6 +29,13 @@ services:
       PROBE_HOST: "db"
       PROBE_PORT: "3306"
 
+  tshoot:
+    image: ubuntu:trusty
+    volumes:
+      - cache:/cache
+      - build:/build
+    command: ["ls", "/build"]
+
   test:
     build: 
       context: ../../
@@ -35,6 +43,7 @@ services:
     image: todobackend-dev
     volumes:
       - cache:/cache
+      - build:/build
     links:
       - db
     environment:
@@ -51,5 +60,5 @@ services:
 #    volumes:
 #      - /tmp/cache:/
 volumes:
-  cache: {}
-  build: {}
+  cache: 
+  build:

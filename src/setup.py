@@ -25,10 +25,11 @@ setup (
 			  "PySocks==1.6.8",
 			  "pytz==2018.9",
 			  "requests==2.21.0",
-			  "ruamel-yaml==0.15.46",
+			  "ruamel-yaml==0.15.94",
 			  "six==1.12.0",
 			  "urllib3==1.24",
-			  "virtualenv==16.4.3"],
+			  "virtualenv==16.4.3",
+			  "uwsgi==2.0.17.1"],
   extras_require       = {
                             "test": [
                               "colorama>=0.4.1",
