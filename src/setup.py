@@ -16,7 +16,7 @@ setup (
 			  "cryptography==2.4.2",
 			  "Django==2.1.7",
 			  "django-cors-headers==2.5.2",
-			  "djangorestframework==3.9.2",
+			  "djangorestframework==3.11.2",
 			  "idna==2.8",
 			  "pycosat==0.6.3",
 			  "pycparser==2.19",
