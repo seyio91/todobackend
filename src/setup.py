@@ -27,7 +27,7 @@ setup (
 			  "requests==2.21.0",
 			  "ruamel-yaml==0.15.94",
 			  "six==1.12.0",
-			  "urllib3==1.24",
+			  "urllib3==1.26.5",
 			  "virtualenv==16.4.3",
 			  "uwsgi==2.0.17.1"],
   extras_require       = {
