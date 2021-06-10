@@ -14,7 +14,7 @@ setup (
 			  "conda==4.3.16",
 			  "configparser==3.7.4",
 			  "cryptography==2.4.2",
-			  "Django==2.1.7",
+			  "Django==2.2.24",
 			  "django-cors-headers==2.5.2",
 			  "djangorestframework==3.9.2",
 			  "idna==2.8",
